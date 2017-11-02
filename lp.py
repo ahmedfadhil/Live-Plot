@@ -60,16 +60,19 @@ def graph_data(stock):
     ax1.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
     ax1.xaxis.set_major_locator(mticker.MaxNLocator(10))
     ax1.grid(True)
-    ax1.annotate('Bad news', (date[11], highp[11]),
-                 xytext=(0.8, 0.9), textcoords='axes friction',
-                 arrowprops=dict(facecolor='grey', color='grey'))
-
-    font_dict = {
-        'family': 'serif',
-        'color': 'darkred',
-        'size': 15
-    }
-    ax1.text(date[10], closep[1], 'Ebay Prices', font_dict=font_dict)
+    bbox_props = dict(boxstyle='round', fc='w', ec='k', lw=1)
+    ax1.annotate(str(closep[-1]), (date[-1], closep[-1]), xytext=(date[-1] + 4, closep[-1]), bbox=bbox_props)
+    #
+    # ax1.annotate('Bad news', (date[11], highp[11]),
+    #              xytext=(0.8, 0.9), textcoords='axes friction',
+    #              arrowprops=dict(facecolor='grey', color='grey'))
+    #
+    # font_dict = {
+    #     'family': 'serif',
+    #     'color': 'darkred',
+    #     'size': 15
+    # }
+    # ax1.text(date[10], closep[1], 'Ebay Prices', font_dict=font_dict)
 
     plt.xlabel('Date')
     plt.ylabel('Price')
